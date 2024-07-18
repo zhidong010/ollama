@@ -64,7 +64,7 @@ if [ -n "$NEEDS" ]; then
 fi
 
 status "Downloading ollama..."
-curl --fail --show-error --location --progress-bar -o $TEMP_DIR/ollama "https://ollama.com/download/ollama-linux-${ARCH}${VER_PARAM}"
+# curl --fail --show-error --location --progress-bar -o $TEMP_DIR/ollama "https://ollama.com/download/ollama-linux-${ARCH}${VER_PARAM}"
 
 for BINDIR in /usr/local/bin /usr/bin /bin; do
     echo $PATH | grep -q $BINDIR && break || continue
@@ -191,7 +191,7 @@ if check_gpu lspci amdgpu || check_gpu lshw amdgpu; then
     $SUDO rm -rf /usr/share/ollama/lib
     $SUDO chmod o+x /usr/share/ollama
     $SUDO install -o ollama -g ollama -m 755 -d /usr/share/ollama/lib/rocm
-    curl --fail --show-error --location --progress-bar "https://ollama.com/download/ollama-linux-amd64-rocm.tgz${VER_PARAM}" \
+    # curl --fail --show-error --location --progress-bar "https://ollama.com/download/ollama-linux-amd64-rocm.tgz${VER_PARAM}" \
         | $SUDO tar zx --owner ollama --group ollama -C /usr/share/ollama/lib/rocm .
     install_success
     status "AMD GPU ready."
